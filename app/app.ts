@@ -3,22 +3,45 @@ import {ionicBootstrap, Platform, MenuController, Nav} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import {HelloIonicPage} from './pages/hello-ionic/hello-ionic';
 import {ListPage} from './pages/list/list';
+import {LoginPage} from './pages/login/login';
+import * as firebase from 'firebase';
 
 
 @Component({
   templateUrl: 'build/app.html'
 })
 class MyApp {
+  rootPage: any;
   @ViewChild(Nav) nav: Nav;
 
-  // make HelloIonicPage the root (or first) page
-  rootPage: any = HelloIonicPage;
   pages: Array<{title: string, component: any}>;
 
   constructor(
     private platform: Platform,
     private menu: MenuController
   ) {
+
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAzFI5_pxrWc6sZWomz7bC5CcHxltt9gRg",
+    authDomain: "handballstats-8b496.firebaseapp.com",
+    databaseURL: "https://handballstats-8b496.firebaseio.com",
+    storageBucket: "handballstats-8b496.appspot.com",
+  };
+  firebase.initializeApp(config);
+
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      // If there's a user take him to the home page.
+      this.rootPage = HelloIonicPage;
+    } else {
+      // If there's no user logged in send him to the LoginPage
+      this.rootPage = LoginPage;
+    }
+  });
+
+
+
     this.initializeApp();
 
     // set our app's pages
