@@ -1,0 +1,21 @@
+{
+    "root" : {
+        "title" : "Page d'accueil handball statistiques Sainte luce sur Loire"
+    },
+    "menu" : "Menu",
+    "user" : {
+        "email" : "Mail",
+        "password" : "Mot de passe"
+    },
+    "team": {
+        "name" : "Nom équipe",
+        "add" : {
+            "title": "Ajout d'une équipe"
+        },
+        "list" : "Liste des équipes"
+    },
+    "button" : {
+        "save" : "Valider",
+        "del" : "Effacer"
+    }
+}

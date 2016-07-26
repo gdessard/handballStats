@@ -1,0 +1,42 @@
+<!--
+  Form for create or update team.
+  TODO add player at team
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ "team.add.title" | translate }}</ion-title>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>    
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <form [ngFormModel]="addTeamForm" (submit)="addTeam($event)">
+
+
+    <ion-item>
+      <ion-label stacked>{{ "team.name" | translate }}</ion-label>
+      <ion-input ngControl="teamName" type="text"></ion-input>
+    </ion-item>
+
+ 
+    <button block type="submit">
+      {{ "button.save" | translate }}
+    </button>
+ 
+  </form>  
+
+<ion-list>
+  {{ "team.list" | translate }}
+  <!-- (click)="teamSelected(team)" -->
+  <ion-item *ngFor="let team of teams" >
+    {{team.name}} | id : {{team.id}}
+    <button item-right (click)="delTeam($event, team)">{{ "button.del" | translate }}</button>
+    <br/>
+  </ion-item>
+</ion-list> 
+
+</ion-content>
