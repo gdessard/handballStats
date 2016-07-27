@@ -5,7 +5,7 @@ import {AuthData} from '../../../providers/auth-data/auth-data';
 import {LoginPage} from '../login/login';
  
 @Component({
-  templateUrl: 'build/pages/reset-password/reset-password.html',
+  templateUrl: 'build/pages/auth/reset-password/reset-password.html',
   providers: [AuthData]
 })
 export class ResetPasswordPage {

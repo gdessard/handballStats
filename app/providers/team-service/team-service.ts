@@ -3,7 +3,7 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import * as firebase from 'firebase';
 import { Observable } from 'rxjs/Observable';  
-import { Team } from '../../pages/model/team.model';
+import { Team } from '../../model/team.model';
 
 /*
   Generated class for the TeamService provider.
@@ -43,11 +43,7 @@ export class TeamService {
    * @param key id of team create by push function
    */
   delTeam(key: string) {
-    console.log("start TeamService.delTeam");
     return this.db.child(key).remove()
-    .then (() => {
-        console.log("remove ok ");
-    })
       .catch(error => {
         console.log("remove failed: " + error.message);
       });
@@ -58,7 +54,6 @@ export class TeamService {
  * @Return Subscription for child_added
  */
   observableAdded(): Observable<Team> {
-    //TODO child_changed when delete work
     return Observable.create(observer => {
       let listener = this.db.on('child_added', snapshot => {
         let data = snapshot.val();

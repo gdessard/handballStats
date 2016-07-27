@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/common';
 import { NavController, Loading } from 'ionic-angular';
 import { TranslatePipe } from 'ng2-translate/ng2-translate';
 import { TeamService } from '../../../providers/team-service/team-service';
-import { Team } from '../../model/team.model';
+import { Team } from '../../../model/team.model';
 import { Subscription } from 'rxjs/Subscription';
 
 /*
@@ -34,6 +34,7 @@ export class AddTeamPage {
     })   
   }
 
+   /** Subscribe observers add and delete */
    ngOnInit() {
     this.subscriptionAdd = this.teamService.observableAdded().subscribe(team => {
       this.teams.push(team);
@@ -48,17 +49,19 @@ export class AddTeamPage {
     });
    }
 
+  /** unsubcribe observers */
   ngOnDestroy() {
     this.subscriptionAdd.unsubscribe();
+    this.subscriptionDel.unsubscribe();
   }
+
+  
   
   /**
    * Add a team
    * @param event 
    */
   addTeam(event) {
-    console.log("start addTeam");
-    
     this.teamService.addTeam(this.addTeamForm.value.teamName);
   }   
 
@@ -68,7 +71,6 @@ export class AddTeamPage {
    * @param team team you wwant to delete 
    */
   delTeam(event, team: Team) {
-    console.log("start delTeam");
     this.teamService.delTeam(team.id);
   }
     

@@ -4,7 +4,7 @@ import {FormBuilder, Validators} from '@angular/common';
 import {AuthData} from '../../../providers/auth-data/auth-data';
  
 @Component({
-  templateUrl: 'build/pages/signup/signup.html',
+  templateUrl: 'build/pages/auth/signup/signup.html',
   providers: [AuthData]
 })
 export class SignupPage {

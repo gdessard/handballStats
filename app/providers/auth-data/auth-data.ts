@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {NavController, Alert} from 'ionic-angular';
-import {LoginPage} from '../../pages/login/login';
+import {LoginPage} from '../../pages/auth/login/login';
 import {HelloIonicPage} from '../../pages/hello-ionic/hello-ionic';
 import * as firebase from 'firebase';
 
@@ -112,6 +112,7 @@ resetPassword(email: string): any {
 logoutUser(): any {
   return this.fireAuth.signOut();
 }
+
 
 
 }
