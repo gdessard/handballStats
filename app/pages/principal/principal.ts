@@ -2,7 +2,6 @@ import { Component, ViewChild } from '@angular/core';
 import { NavController, MenuController, Nav } from 'ionic-angular';
 //Pages of menu
 import { AccueilPage } from '../accueil/accueil';
-import { ListPage } from '../list/list';
 import { AddTeamPage } from '../team/add-team/add-team';
 
 /*
@@ -28,7 +27,6 @@ export class PrincipalPage {
     // set our app's pages
     this.pages = [
       { title: 'Accueil', component: AccueilPage },
-      { title: 'My First List', component: ListPage },
       { title: 'Ajout d\'une équipe', component: AddTeamPage },
 
 //      { title: this.translate.get("team.add.title", null).subscribe
