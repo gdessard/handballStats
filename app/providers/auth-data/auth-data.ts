@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {NavController, Alert} from 'ionic-angular';
 import {LoginPage} from '../../pages/auth/login/login';
-import {HelloIonicPage} from '../../pages/hello-ionic/hello-ionic';
+import {AccueilPage} from '../../pages/accueil/accueil';
 import * as firebase from 'firebase';
 
 @Injectable()
@@ -27,7 +27,7 @@ export class AuthData {
  */
 loginUser(email: string, password: string): any {
   return this.fireAuth.signInWithEmailAndPassword(email, password).then((authData) => {
-    this.nav.setRoot(HelloIonicPage);
+    this.nav.setRoot(AccueilPage);
   }, (error) => {
       let prompt = Alert.create({
         message: error.message,
@@ -55,7 +55,7 @@ signupUser(email: string, password: string): any {
       }).then(() => {
         //instead of this.nav.push(HomePage)  it’s easy, I want HomePage  to be my rootPage , 
         //that means it’s going to be the only page on the stack, no back button or anything like that.
-        this.nav.setRoot(HelloIonicPage);
+        this.nav.setRoot(AccueilPage);
       });
 
     })

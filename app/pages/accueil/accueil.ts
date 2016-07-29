@@ -5,12 +5,12 @@ import {LoginPage} from '../../pages/auth/login/login';
 import {TranslatePipe} from 'ng2-translate/ng2-translate';
 
 @Component({
-  templateUrl: 'build/pages/hello-ionic/hello-ionic.html',
+  templateUrl: 'build/pages/accueil/accueil.html',
   providers: [AuthData],
   pipes: [TranslatePipe]
 
 })
-export class HelloIonicPage {
+export class AccueilPage {
   constructor(public nav: NavController, public authData: AuthData) {
   }
 	

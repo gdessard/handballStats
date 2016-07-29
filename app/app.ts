@@ -2,7 +2,7 @@ import { Component, ViewChild, provide } from '@angular/core';
 import { Http, HTTP_PROVIDERS } from '@angular/http';
 import { ionicBootstrap, Platform, MenuController, Nav } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
-import { HelloIonicPage } from './pages/hello-ionic/hello-ionic';
+import { AccueilPage } from './pages/accueil/accueil';
 import { ListPage } from './pages/list/list';
 import { LoginPage } from './pages/auth/login/login';
 import { AddTeamPage } from './pages/team/add-team/add-team';
@@ -39,7 +39,7 @@ class MyApp {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       // If there's a user take him to the home page.
-      this.rootPage = HelloIonicPage;
+      this.rootPage = AccueilPage;
     } else {
       // If there's no user logged in send him to the LoginPage
       this.rootPage = LoginPage;
@@ -52,7 +52,7 @@ class MyApp {
 
     // set our app's pages
     this.pages = [
-      { title: 'Hello Ionic', component: HelloIonicPage },
+      { title: 'Accueil', component: AccueilPage },
       { title: 'My First List', component: ListPage },
       { title: 'Ajout d\'une équipe', component: AddTeamPage },
 
