@@ -2,10 +2,8 @@ import { Component, ViewChild, provide } from '@angular/core';
 import { Http, HTTP_PROVIDERS } from '@angular/http';
 import { ionicBootstrap, Platform, MenuController, Nav } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
-import { AccueilPage } from './pages/accueil/accueil';
-import { ListPage } from './pages/list/list';
+import { PrincipalPage } from './pages/principal/principal';
 import { LoginPage } from './pages/auth/login/login';
-import { AddTeamPage } from './pages/team/add-team/add-team';
 import * as firebase from 'firebase';
 import {TranslateService, TranslatePipe, TranslateLoader, TranslateStaticLoader} from 'ng2-translate/ng2-translate';
 
@@ -18,8 +16,6 @@ import {TranslateService, TranslatePipe, TranslateLoader, TranslateStaticLoader}
 class MyApp {
   rootPage: any;
   @ViewChild(Nav) nav: Nav;
-
-  pages: Array<{title: string, component: any}>;
 
   constructor(
     private platform: Platform,
@@ -39,7 +35,7 @@ class MyApp {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       // If there's a user take him to the home page.
-      this.rootPage = AccueilPage;
+      this.rootPage = PrincipalPage;
     } else {
       // If there's no user logged in send him to the LoginPage
       this.rootPage = LoginPage;
@@ -50,15 +46,6 @@ class MyApp {
 
     this.translateConfig();
 
-    // set our app's pages
-    this.pages = [
-      { title: 'Accueil', component: AccueilPage },
-      { title: 'My First List', component: ListPage },
-      { title: 'Ajout d\'une équipe', component: AddTeamPage },
-
-//      { title: this.translate.get("team.add.title", null).subscribe
-//        (localizedValue => console.log(localizedValue)), component: AddTeamPage }
-    ];
   }  
 
   initializeApp() {
@@ -67,13 +54,6 @@ class MyApp {
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
     });
-  }
-
-  openPage(page) {
-    // close the menu when clicking a link from the menu
-    this.menu.close();
-    // navigate to the new page if it is not the current page
-    this.nav.setRoot(page.component);
   }
 
   translateConfig() {
